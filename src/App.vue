@@ -1,14 +1,17 @@
 <template>
     <div id="app">
-
+        <SignUp/>
     </div>
 </template>
 
 <script>
+    import SignUp from './components/User/SignUp.vue';
 
     let App = {
         name: 'app',
-        components: {}
+        components: {
+            SignUp
+        }
     };
     export default App;
 </script>
