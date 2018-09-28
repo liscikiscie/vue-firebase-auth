@@ -8,14 +8,22 @@
                 <button>Sign in</button>
             </form>
         </div>
+        <div class="googleProvider">
+            <button @click="singInWithGoogle">SignIn with Google</button>
+        </div>
+        <Profile/>
     </div>
 </template>
 
 <script>
     import * as firebase from 'firebase';
+    import Profile from './Profile.vue';
 
     let SignIn = {
         name: 'SignIn',
+        components: {
+            Profile
+        },
         data() {
             return {
                 email: '',
@@ -30,6 +38,13 @@
                     )
                     .catch(error => alert(error.message));
                 this.password = '';
+            },
+            singInWithGoogle() {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                firebase.auth().signInWithPopup(provider)
+                    .catch(error => alert(error.message))
+                    .then(data => console.log(data.user,
+                        data.credential.accessToken))
             }
         },
         created() {

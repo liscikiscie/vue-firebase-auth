@@ -20,7 +20,7 @@
     import * as firebase from 'firebase';
 
     let SignUp = {
-        name: 'SignUp.vue',
+        name: 'SignUp',
         data() {
             return {
                 email: '',
