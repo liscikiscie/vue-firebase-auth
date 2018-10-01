@@ -2,6 +2,8 @@
     <div class="singUp__wrapper">
         <div class="userAuth" v-if="authUser">
             <h2>Signed in as {{ authUser.email }}</h2>
+            <img :src="authUser.photoURL" height="150">
+            <p>Hi, {{authUser.displayName || authUser.email.substring(0, authUser.email.indexOf("@"))}}</p>
             <button @click="signOut">Sign out</button>
         </div>
         <div v-else class="authForm">
@@ -39,7 +41,7 @@
             },
             signOut() {
                 firebase.auth().signOut()
-            }
+            },
         },
         created() {
             firebase.auth().onAuthStateChanged(user => {
